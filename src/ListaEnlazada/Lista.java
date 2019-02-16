@@ -6,6 +6,27 @@ public class Lista {
     private Nodo cabeza = null;
     private int longitud = 0;
 
+    public void eliminarLibro(int n) {
+        if (cabeza != null) {
+            if (n == 0) {
+                this.eliminarPrincipio();
+            } else if (n < longitud) {
+                Nodo Puntero = contar(n - 1, true);
+                if (Puntero.siguiente.siguiente != null) {
+                    Nodo temp = Puntero.siguiente;
+                    Puntero.siguiente = temp.siguiente;
+                    temp.siguiente = null;
+                    longitud--;
+                } else {
+                    Puntero.siguiente = null;
+                    longitud--;
+                }
+            } else {
+                System.out.println("No se pudo encontrar el libro");
+            }
+        }
+    }
+
     public void insertarPrincipio(libro libro) {
         Nodo nodo = new Nodo(libro);
         nodo.siguiente = cabeza;
@@ -98,19 +119,12 @@ public class Lista {
         }
     }
 
-    public void eliminarLibro(int n) {
-        if (cabeza != null) {
-            Nodo Puntero = contar(n - 1, false);
-        }
-    }
-
     private class Nodo {
-        public libro Libro;
-        public Nodo siguiente = null;
+        libro Libro;
+        Nodo siguiente = null;
 
-        public Nodo(libro libro) {
+        Nodo(libro libro) {
             this.Libro = libro;
         }
     }
-
 }
