@@ -3,7 +3,7 @@ package ListaEnlazada;
 public class libro {
     private String titulo;
     private String Autor;
-    private int ISBN;
+    private double ISBN;
 
     public String getTitulo() {
         return titulo;
@@ -21,11 +21,17 @@ public class libro {
         Autor = autor;
     }
 
-    public int getISBN() {
+    public libro(String Titulo, String Autor, double Isbn) {
+        this.Autor = Autor;
+        this.titulo = Titulo;
+        this.ISBN = Isbn;
+    }
+
+    public double getISBN() {
         return ISBN;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(double ISBN) {
         this.ISBN = ISBN;
     }
 }
